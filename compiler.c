@@ -19,8 +19,7 @@ int check_string(struct list *stack, char *s) {
             else pop_back(stack);
         }
     }
-    if (empty(*stack))
-        return 1;
+    if (empty(*stack)) return 1;
     return 0;
 }
 
@@ -32,10 +31,8 @@ int main(int argc, char const *argv[]) {
     printf("Enter string: ");
     scanf("%100[^\n]", s);
 
-    if (check_string(stack, s))
-        printf("Valid\n");
-    else
-        printf("Invalid\n");
+    if (check_string(stack, s)) printf("Valid\n");
+    else printf("Invalid\n");
 
     delete(stack);
     free(stack);

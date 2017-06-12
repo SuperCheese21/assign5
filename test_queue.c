@@ -22,10 +22,12 @@ void init_multi(int num, int min, int max, int rate) {
 
     for (i = 0; i < 600; i++) {
         if (i % rate == 0) {
-            int n, s = size(queues[0]);
+            int n = 0, s = size(queues[0]);
             for (j = 1; j < num; j++) {
-                if (size(queues[j]) < s)
+                if (size(queues[j]) < s) {
+                    s = size(queues[j]);
                     n = j;
+                }
             }
             push_back(&(queues[n]), get_rand(min, max));
         }
@@ -43,9 +45,8 @@ void init_multi(int num, int min, int max, int rate) {
         }
     }
 
-    for (i = 0; i < num; i++) {
+    for (i = 0; i < num; i++)
         delete(&(queues[i]));
-    }
 }
 
 void init_single(int num, int min, int max, int rate) {
@@ -60,13 +61,10 @@ void init_single(int num, int min, int max, int rate) {
 
     init(&queue);
     for (i = 0; i < 600; i++) {
-        if (i % rate == 0)
-            push_back(&queue, get_rand(min, max));
+        if (i % rate == 0) push_back(&queue, get_rand(min, max));
         for (j = 0; j < num; j++) {
-            if (cashiers[j] != 0)
-                (cashiers[j])--;
-            else if (cashiers[j] == 0 && size(queue) != 0)
-                cashiers[j] = remove_front(&queue);
+            if (cashiers[j] != 0) (cashiers[j])--;
+            else if (cashiers[j] == 0 && size(queue) != 0) cashiers[j] = remove_front(&queue);
         }
         if (i == 59 || i == 299 || i == 599)
             printf("%i hour(s):\nNumber of customers in queue: %i\n\n", (i + 1) / 60, size(queue));
