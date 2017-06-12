@@ -64,7 +64,6 @@ int back(struct list l) {
 
 int pop_back(struct list *l) {
     int val = l->tail->val;
-
     struct node *temp = l->head;
 
     if (temp->next == NULL) {
@@ -85,16 +84,14 @@ int pop_back(struct list *l) {
 
 int remove_front(struct list *l) {
     int val = l->head->val;
-
     struct node *temp = l->head;
 
-    if (temp->next == NULL) {
-        free(temp);
+    if (temp->next == NULL)
         init(l);
-    } else {
+    else
         l->head = l->head->next;
-        free(temp);
-    }
+
+    free(temp);
 
     return val;
 }

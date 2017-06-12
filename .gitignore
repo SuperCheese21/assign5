@@ -1,2 +1,4 @@
-compiler
-test_queue
+run_compiler
+run_queue
+*.o
+*.out

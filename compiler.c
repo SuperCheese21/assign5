@@ -2,6 +2,26 @@
 #include <stdio.h>
 #include "list.h"
 
+int check_string(struct list *, char *);
+
+int main(int argc, char const *argv[]) {
+    char *s = (char *) malloc(sizeof(char) * 256);
+    struct list *stack = (struct list *) malloc(sizeof(struct list));
+    init(stack);
+
+    printf("Enter string: ");
+    scanf("%100[^\n]", s);
+
+    if (check_string(stack, s)) printf("Valid\n");
+    else printf("Invalid\n");
+
+    delete(stack);
+    free(stack);
+    free(s);
+
+    return 0;
+}
+
 int check_string(struct list *stack, char *s) {
     int i;
     for (i = 0; i < sizeof(char) * 256; i++) {
@@ -20,23 +40,5 @@ int check_string(struct list *stack, char *s) {
         }
     }
     if (empty(*stack)) return 1;
-    return 0;
-}
-
-int main(int argc, char const *argv[]) {
-    char *s = (char *) malloc(sizeof(char) * 256);
-    struct list *stack = (struct list *) malloc(sizeof(struct list));
-    init(stack);
-
-    printf("Enter string: ");
-    scanf("%100[^\n]", s);
-
-    if (check_string(stack, s)) printf("Valid\n");
-    else printf("Invalid\n");
-
-    delete(stack);
-    free(stack);
-    free(s);
-
     return 0;
 }
