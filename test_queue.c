@@ -87,10 +87,7 @@ int main(int argc, char const *argv[]) {
         else if (a == 's') min = n;
         else if (a == 'e') max = n;
         else if (a == 'c') rate = n;
-        else {
-            printf("Invalid arg -");
-            printf("%c\n", a);
-        }
+        else printf("Invalid arg -%c\n", a);
     }
 
     srand(time(NULL));
