@@ -10,8 +10,8 @@ int get_rand(int a, int b) {
 
 void init_multi(int num, int min, int max, int rate) {
     int i, j;
-    struct list *queues = (struct list *) malloc(sizeof(struct list) * num);
     int cashiers[num];
+    struct list queues[num];
 
     printf("Multiple queues:\n\n");
 
@@ -46,8 +46,6 @@ void init_multi(int num, int min, int max, int rate) {
     for (i = 0; i < num; i++) {
         delete(&(queues[i]));
     }
-
-    free(queues);
 }
 
 void init_single(int num, int min, int max, int rate) {
