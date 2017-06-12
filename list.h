@@ -1,3 +1,12 @@
+/*********************************************************************
+** Program Filename: list.h
+** Author: Ethan Shields
+** Date: 6/11/17
+** Description: Lists function prototypes for linked lists
+** Input:
+** Output:
+*********************************************************************/
+
 struct node {
    int val;
    struct node *next;
